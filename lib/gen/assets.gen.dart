@@ -27,11 +27,22 @@ class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
-  static const String labels = 'assets/labels.txt';
-  static const String model = 'assets/model.tflite';
+  static const String maizeLabels = 'assets/maize_labels.txt';
+  static const String maizeModel = 'assets/maize_model.tflite';
+  static const String potatoesLabels = 'assets/potatoes_labels.txt';
+  static const String potatoesModel = 'assets/potatoes_model.tflite';
+  static const String tomatoLabels = 'assets/tomato_labels.txt';
+  static const String tomatoModel = 'assets/tomato_model.tflite';
 
   /// List of all assets
-  static List<String> get values => [labels, model];
+  static List<String> get values => [
+        maizeLabels,
+        maizeModel,
+        potatoesLabels,
+        potatoesModel,
+        tomatoLabels,
+        tomatoModel
+      ];
 }
 
 class AssetGenImage {

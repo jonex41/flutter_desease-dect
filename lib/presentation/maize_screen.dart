@@ -44,6 +44,24 @@ class MaizeScreen extends HookWidget {
     final output = useState('');
     final path = useState('');
 
+    void initTFlite() async {
+      print('init maize');
+      final res = await Tflite.loadModel(
+          model: "assets/maize_model.tflite",
+          labels: "assets/maize_labels.txt",
+          numThreads: 1, // defaults to 1
+          isAsset:
+              true, // defaults to true, set to false to load resources outside assets
+          useGpuDelegate:
+              false // defaults to false, set to true to use GPU delegate
+          );
+    }
+
+    useEffect(() {
+      initTFlite();
+      return null;
+    });
+
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -140,11 +158,11 @@ class MaizeScreen extends HookWidget {
                     print('recognitions');
                     String newName1 = list1.join(' ');
                     output.value = '$newName1 Detected';
-                    if (recognitions[0]['confidence'] < 1) {
+                    /* if (recognitions[0]['confidence'] < 1) {
                       setValue('diseaseName', 'Error');
-                    } else {
+                    } else { */
                       setValue('diseaseName', newName1);
-                    }
+                  //  }
 
                     setValue('path', path.value);
 

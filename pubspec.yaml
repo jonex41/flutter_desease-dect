@@ -98,8 +98,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/labels.txt
-    - assets/model.tflite
+    - assets/maize_labels.txt
+    - assets/tomato_labels.txt
+    - assets/potatoes_labels.txt
+    - assets/maize_model.tflite
+    - assets/tomato_model.tflite
+    - assets/potatoes_model.tflite
     - assets/images/
    
 

@@ -13,7 +13,7 @@ class HomeScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    void initTFlite() async {
+    /* void initTFlite() async {
       final res = await Tflite.loadModel(
           model: "assets/model.tflite",
           labels: "assets/labels.txt",
@@ -28,7 +28,7 @@ class HomeScreen extends HookWidget {
     useEffect(() {
       initTFlite();
       return null;
-    });
+    }); */
     return SafeArea(
       child: Scaffold(
         body: Padding(

@@ -45,6 +45,24 @@ class TomatoesScreen extends HookWidget {
     final output = useState('');
     final path = useState('');
 
+    void initTFlite() async {
+      print('init tomato');
+      final res = await Tflite.loadModel(
+          model: "assets/tomato_model.tflite",
+          labels: "assets/tomato_labels.txt",
+          numThreads: 1, // defaults to 1
+          isAsset:
+              true, // defaults to true, set to false to load resources outside assets
+          useGpuDelegate:
+              false // defaults to false, set to true to use GPU delegate
+          );
+    }
+
+    useEffect(() {
+      initTFlite();
+      return null;
+    });
+
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -142,11 +160,11 @@ class TomatoesScreen extends HookWidget {
                     list1.removeAt(0);
                     String newName1 = list1.join(' ');
                     output.value = '$newName1 Detected';
-                    if (recognitions[0]['confidence'] < 1) {
+                    /*  if (recognitions[0]['confidence'] < 1) {
                       setValue('diseaseName', 'Error');
-                    } else {
-                      setValue('diseaseName', newName1);
-                    }
+                    } else { */
+                    setValue('diseaseName', newName1);
+                    // }
                     setValue('path', path.value);
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) =>
